@@ -1,0 +1,9 @@
+{
+  "python.linting.pylintEnabled": true,
+  "workbench.colorCustomizations": {
+    "statusBar.background": "#2804f7",
+    "titleBar.activeBackground": "#2804f7",
+    "titleBar.inactiveBackground": "#2804f7",
+  },
+  "window.title": "Project Four Jordans Frontend"
+}
