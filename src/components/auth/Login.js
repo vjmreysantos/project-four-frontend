@@ -67,7 +67,7 @@ function Login() {
               </p>
             )}
             <div className="field">
-              <button type="submit" className="button is-fullwidth is-warning">
+              <button type="submit" className="button is-fullwidth">
                 Log Me In!
               </button>
             </div>

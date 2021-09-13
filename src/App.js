@@ -1,4 +1,5 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import SecureRoute from './components/common/SecureRoute'
 
 import Navbar from './components/common/Navbar'
 import Home from './components/common/Home'
@@ -18,12 +19,12 @@ function App() {
         <Route exact path="/">
           <Home />
         </Route>
-        <Route path="/jordans/new">
+        <SecureRoute path="/jordans/new">
           <JordansNew />
-        </Route>
-        <Route path="/jordans/edit">
+        </SecureRoute>
+        <SecureRoute path="/jordans/edit">
           <JordansEdit />
-        </Route>
+        </SecureRoute>
         <Route path="/jordans/:jordanId">
           <JordansShow />
         </Route>

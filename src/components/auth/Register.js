@@ -104,7 +104,7 @@ function Register() {
               )}
             </div>
             <div className="field">
-              <button type="submit" className="button is-fullwidth is-warning">
+              <button type="submit" className="button is-fullwidth">
                 Sign me up!
               </button>
             </div>

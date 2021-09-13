@@ -27,6 +27,8 @@ export function isAuthenticated() {
   
 export function isOwner(userId) {
   const payload = getPayload()
-  if (!payload) return false
-  return payload.sub === userId
+  if (!payload) {
+    return false
+  }
+  return userId === payload.sub
 }

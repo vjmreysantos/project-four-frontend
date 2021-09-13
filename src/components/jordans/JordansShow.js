@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { getSingleJordan, deleteJordan } from '../../lib/api'
 import { isOwner } from '../../lib/auth'
 
@@ -7,24 +7,24 @@ import Loading from '../common/Loading'
 import Error from '../common/Error'
 
 function JordanShow() {
-  const { jordanId } = useParams()
+
   const [jordan, setJordan] = React.useState(null)
   const [isError, setIsError] = React.useState(false)
   const isLoading = !jordan && !isError
+  const history = useHistory()
 
   React.useEffect(() => {
     const getData = async () => {
       try {
-        const response = await getSingleJordan(jordanId)
+        const response = await getSingleJordan()
         setJordan(response.data)
-        console.log(getData)
       } catch (err) {
         console.log(err)
         setIsError(true)
       }
     }
     getData()
-  }, [jordanId])
+  }, [])
 
   const handleDelete = async () => {
     await deleteJordan(jordan.id)

@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { getToken } from '../lib/auth'
+import { getToken } from './auth'
 
 const baseUrl = '/api'
 
@@ -15,8 +15,8 @@ export function getAllJordans() {
   return axios.get(`${baseUrl}/jordans`)
 }
 
-export function getSingleJordan(jordanId) {
-  return axios.get(`${baseUrl}/jordans/${jordanId}`)
+export function getSingleJordan(jordan) {
+  return axios.get(`${baseUrl}/jordans/${jordan.id}`)
 }
 
 export function listNewJordan(formData) {
