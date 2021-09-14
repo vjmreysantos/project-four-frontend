@@ -1,6 +1,6 @@
 import React from 'react'
 import { registerUser } from '../../lib/api'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 
 const initialState = {
   username: '',
@@ -23,7 +23,7 @@ function Register() {
     e.preventDefault()
     try {
       await registerUser(formData)
-      history.push('/login')
+      history.push('/auth/login/')
     } catch (err) {
       console.log(err.response.data)
     }
@@ -68,6 +68,21 @@ function Register() {
               )}
             </div>
             <div className="field">
+              <label className="label">Profile Image</label>
+              <div className="control">
+                <input
+                  className={`input ${formErrors.profileImage ? 'is-danger' : ''}`}
+                  placeholder="Profile Image"
+                  onChange={handleChange}
+                  name="profileImage"
+                  value={formData.profileImage}
+                />
+              </div>
+              {formErrors.profileImage && (
+                <p className="help is-danger">{formErrors.profileImage}</p>
+              )}
+            </div>
+            <div className="field">
               <label className="label">Password</label>
               <div className="control">
                 <input
@@ -104,9 +119,10 @@ function Register() {
               )}
             </div>
             <div className="field">
-              <button type="submit" className="button is-fullwidth">
+              <button type="submit" className="button is-fullwidth is-danger">
                 Sign me up!
               </button>
+              <p>Already have an account? Log in <Link to="/auth/login/">here</Link></p>
             </div>
           </form>
         </div>

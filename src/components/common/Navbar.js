@@ -27,7 +27,7 @@ function Navbar() {
       <div className="container">
         <div className="navbar-brand">
           <Link to="/" className="navbar-item">
-            <img src="https://www.seekpng.com/png/detail/70-705495_15-jordan-png-for-free-download-on-mbtskoudsalg.png" />
+            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/3/37/Jumpman_logo.svg/1200px-Jumpman_logo.svg.png" width="30"/>
           </Link>
           <span
             className={`navbar-burger ${isOpen ? 'is-active' : ''}`}
@@ -40,13 +40,21 @@ function Navbar() {
         </div>
         <div className={`navbar-menu ${isOpen ? 'is-active' : ''}`}>
           <div className="navbar-start">
-            <Link to="/jordans" className="navbar-item">
-              Jordans Gallery
+            <Link to="/jordans/" className="navbar-item">
+              Kicks
+            </Link>
+            <Link to="/auth/users/" className="navbar-item">
+              Ballers
             </Link>
             {isAuth && (
-              <Link to="/jordans/new" className="navbar-item">
+              <>
+                <Link to="/jordans/new/" className="navbar-item">
                 Add a Jordan
-              </Link>
+                </Link>
+                <Link to="/auth/myprofile/" className="navbar-item">
+                My Profile
+                </Link>
+              </>
             )}
           </div>
           <div className="navbar-end">
@@ -54,16 +62,16 @@ function Navbar() {
               <div className="buttons">
                 {!isAuth && (
                   <>
-                    <Link to="/register" className="button">
+                    <Link to="/auth/register/" className="button is-danger">
                       Register
                     </Link>
-                    <Link to="/login" className="button">
+                    <Link to="/auth/login/" className="button is-danger">
                       Login
                     </Link>
                   </>
                 )}
                 {isAuth && (
-                  <button className="button" onClick={handleLogout}>Log Out</button>
+                  <button className="button is-danger" onClick={handleLogout}>Log Out</button>
                 )}
               </div>
             </div>

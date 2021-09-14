@@ -23,7 +23,6 @@ function JordansIndex() {
   }, [])
 
   return (
-    // <h1>Jordans Index Page</h1>
     <section className="section">
       <div className="container">
         {isError && <Error />}

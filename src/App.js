@@ -9,6 +9,9 @@ import JordansIndex from './components/jordans/JordansIndex'
 import JordansShow from './components/jordans/JordansShow'
 import JordansNew from './components/jordans/JordansNew'
 import JordansEdit from './components/jordans/JordansEdit'
+import MyProfile from './components/users/MyProfile'
+import BallerShow from './components/users/BallersShow'
+import Ballers from './components/users/Ballers'
 
 function App() {
 
@@ -19,24 +22,33 @@ function App() {
         <Route exact path="/">
           <Home />
         </Route>
-        <SecureRoute path="/jordans/new">
+        <SecureRoute path="/jordans/new/">
           <JordansNew />
         </SecureRoute>
-        <SecureRoute path="/jordans/edit">
+        <SecureRoute path="/jordans/:id/edit/">
           <JordansEdit />
         </SecureRoute>
-        <Route path="/jordans/:jordanId">
+        <Route path="/jordans/:id/">
           <JordansShow />
         </Route>
-        <Route path="/jordans">
+        <Route path="/jordans/">
           <JordansIndex />
         </Route>
-        <Route path="/register">
+        <Route path="/auth/register/">
           <Register />
         </Route>
-        <Route path="/login">
+        <Route path="/auth/login/">
           <Login />
         </Route>
+        <Route path="/auth/profile/username/">
+          <BallerShow />
+        </Route>
+        <Route path="/auth/users">
+          <Ballers />
+        </Route>
+        <SecureRoute path="/auth/myprofile/">
+          <MyProfile />
+        </SecureRoute>
       </Switch>
     </BrowserRouter>
   )

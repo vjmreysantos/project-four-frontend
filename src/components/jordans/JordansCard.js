@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 function JordanCard({ jordans }) {
   return (
     <div className="column is-one-quarter-desktop is-one-third-tablet">
-      <Link to={`/jordans/${jordans._id}`}>
+      <Link to={`/jordans/${jordans.id}/`}>
         <div className="card">
           <div className="card-header">
             <div className="card-header-title">{jordans.name}</div>

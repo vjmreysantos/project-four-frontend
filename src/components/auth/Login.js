@@ -1,6 +1,5 @@
 import React from 'react'
-import { useHistory } from 'react-router-dom'
-
+import { useHistory, Link } from 'react-router-dom'
 import { loginUser } from '../../lib/api'
 import { setToken } from '../../lib/auth'
 
@@ -24,7 +23,7 @@ function Login() {
     try {
       const { data } = await loginUser(formData)
       setToken(data.token)
-      history.push('/jordans')
+      history.push('/jordans/')
     } catch (err) {
       setIsError(true)
     }
@@ -39,12 +38,12 @@ function Login() {
             onSubmit={handleSubmit}
           >
             <div className="field">
-              <label className="label">Email</label>
+              <label className="label">Username</label>
               <div className="control">
                 <input
                   className="input"
-                  placeholder="Email"
-                  name="email"
+                  placeholder="Username"
+                  name="username"
                   onChange={handleChange}
                 />
               </div>
@@ -63,13 +62,14 @@ function Login() {
             </div>
             {isError && (
               <p className="help is-danger">
-                Either email or password were incorrect
+                Username or password incorrect
               </p>
             )}
             <div className="field">
-              <button type="submit" className="button is-fullwidth">
+              <button type="submit" className="button is-fullwidth is-danger">
                 Log Me In!
               </button>
+              <p>Dont have an account? Register <Link to="/auth/register/">here</Link></p>
             </div>
           </form>
         </div>

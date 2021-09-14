@@ -1,34 +1,33 @@
 import React from 'react'
-import { Link, useHistory } from 'react-router-dom'
 import { getSingleJordan, deleteJordan } from '../../lib/api'
-import { isOwner } from '../../lib/auth'
-
 import Loading from '../common/Loading'
 import Error from '../common/Error'
+import { useParams } from 'react-router'
+import { Link } from 'react-router-dom'
+import { isOwner } from '../../lib/auth'
 
 function JordanShow() {
-
+  const { jordanId } = useParams()
   const [jordan, setJordan] = React.useState(null)
   const [isError, setIsError] = React.useState(false)
   const isLoading = !jordan && !isError
-  const history = useHistory()
+
 
   React.useEffect(() => {
     const getData = async () => {
       try {
-        const response = await getSingleJordan()
+        const response = await getSingleJordan(jordanId)
         setJordan(response.data)
       } catch (err) {
-        console.log(err)
         setIsError(true)
       }
     }
     getData()
-  }, [])
+  }, [jordanId])
 
   const handleDelete = async () => {
     await deleteJordan(jordan.id)
-    history.push('/jordans')
+    history.push('/jordans/')
   }
 
   return (
@@ -80,7 +79,7 @@ function JordanShow() {
                   <div className="buttons">
                     <Link
                       to={`/jordans/${jordan.id}/edit`}
-                      className="button is-warning"
+                      className="button is-danger"
                     >
                       Edit this Jordan
                     </Link>
