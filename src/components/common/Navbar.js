@@ -23,7 +23,7 @@ function Navbar() {
 
 
   return (
-    <nav className="navbar is-dark">
+    <nav className="navbar is-light">
       <div className="container">
         <div className="navbar-brand">
           <Link to="/" className="navbar-item">
@@ -43,15 +43,12 @@ function Navbar() {
             <Link to="/jordans/" className="navbar-item">
               Kicks
             </Link>
-            <Link to="/auth/users/" className="navbar-item">
-              Ballers
-            </Link>
             {isAuth && (
               <>
                 <Link to="/jordans/new/" className="navbar-item">
                 Add a Jordan
                 </Link>
-                <Link to="/auth/myprofile/" className="navbar-item">
+                <Link to="/auth/profile/" className="navbar-item">
                 My Profile
                 </Link>
               </>

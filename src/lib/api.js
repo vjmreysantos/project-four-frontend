@@ -41,29 +41,6 @@ export function loginUser(formData) {
   return axios.post(`${baseUrl}/auth/login/`, formData)
 }
 
-// * Auth Requests
-
-//? GET CURRENT USER PROFILE.
-export const getMyProfile = () => {
-  return axios.get(`${baseUrl}/auth/myprofile/`, getHeaders())
-}
-
-//? GET ALL USERS.
-export const getAllUsers = () => {
-  return axios.get(`${baseUrl}/auth/users/`, getHeaders())
-}
-
-//? GET A SINGLE USER.
-export const getAUser = username => {
-  return axios.get(`${baseUrl}/auth/profile/${username}/`, getHeaders())
-}
-
-//? PUT TO EDIT CURRENT USER.
-export const editProfile = data => {
-  return axios.put(`${baseUrl}/auth/myprofile/`, data, getHeaders())
-}
-
-//? DELETE USER PROFILE.
-export const deleteProfile = () => {
-  return axios.delete(`${baseUrl}/auth/myprofile/`, getHeaders())
+export function userProfile() {
+  return axios.post(`${baseUrl}/auth/profile/`)
 }

@@ -1,10 +1,10 @@
-import React from 'react'
+// import React from 'react'
 
-function JordansEdit() {
+// function JordansEdit() {
 
-  return (
-    <h1>Jordans Edit Page</h1>
-  )
-}
+//   return (
+//     <h1>Jordans Edit Page</h1>
+//   )
+// }
 
-export default JordansEdit
+// export default JordansEdit

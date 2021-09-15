@@ -7,6 +7,8 @@ import Loading from '../common/Loading'
 
 function JordansIndex() {
   const [jordans, setJordans] = React.useState(null)
+  const [searchValue, setSearchValue] = React.useState('')
+
   const [isError, setIsError] = React.useState(false)
   const isLoading = !jordans && !isError
 
@@ -22,14 +24,32 @@ function JordansIndex() {
     getData()
   }, [])
 
+  function filterJordans() {
+    return jordans.filter(jordan => {
+      return (jordan.name.toLowerCase().includes(searchValue.toLowerCase())
+      )
+    })
+  }
+
+  const handleSearch = (e) => {
+    setSearchValue(e.target.value)
+  }
+
   return (
     <section className="section">
       <div className="container">
+        <form className="search">
+          <input
+            className="input"
+            placeholder="Search"
+            onChange={handleSearch} />
+        </form>
+        <hr />
         {isError && <Error />}
         {isLoading && <Loading />}
         <div className="columns is-multiline">
           {jordans &&
-          jordans.map(jordans => (
+          filterJordans().map(jordans => (
             <JordansCard key={jordans._id} jordans={jordans} />
           ))}
         </div>
