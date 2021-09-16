@@ -1,6 +1,15 @@
 @import '~bulma/bulma.sass';
 
+* {
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-image: url(https://c.static-nike.com/a/images/qe2yqecjebzl0d0cyezn/jordan-collection-homepage.png);
+}
+
 .card {
+  background-image: url(https://static.nike.com/a/images/gmp2gru4y1xlw279fs3x/air-jordan-7.png);
   height: 100%;
   display:flex;
   flex-direction: column;
@@ -14,8 +23,17 @@
   margin: 0 10px;
 }
 
+#error, form {
+  background-image: url(https://static.nike.com/a/images/gmp2gru4y1xlw279fs3x/air-jordan-7.png);
+}
+
 .form-link {
   margin-left: 3px;
+}
+
+.hero-home {
+  color: white;
+  font-size: 35px;
 }
 
 span.logout {
@@ -24,4 +42,8 @@ span.logout {
 
 section.section {
   min-height: calc(100vh - 11.25rem);
+}
+
+a {
+  color: white;
 }

@@ -41,21 +41,21 @@ function Navbar() {
         <div className={`navbar-menu ${isOpen ? 'is-active' : ''}`}>
           <div className="navbar-start">
             <Link to="/jordans/" className="navbar-item">
-              Kicks
+              <strong>Kicks</strong>
             </Link>
-            {isAuth && (
-              <>
-                <Link to="/jordans/new/" className="navbar-item">
-                Add a Jordan
-                </Link>
-                <Link to="/auth/profile/" className="navbar-item">
-                My Profile
-                </Link>
-              </>
-            )}
           </div>
           <div className="navbar-end">
             <div className="navbar-item">
+              {isAuth && (
+                <>
+                  <Link to="/jordans/new/" className="navbar-profile">
+                  ➕
+                  </Link>
+                  <Link to="/auth/profile/" className="navbar-item">
+                My Profile
+                  </Link>
+                </>
+              )}
               <div className="buttons">
                 {!isAuth && (
                   <>

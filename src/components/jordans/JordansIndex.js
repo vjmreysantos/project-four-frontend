@@ -12,15 +12,16 @@ function JordansIndex() {
   const [isError, setIsError] = React.useState(false)
   const isLoading = !jordans && !isError
 
-  React.useEffect(() => {
-    const getData = async () => {
-      try {
-        const response = await getAllJordans()
-        setJordans(response.data)
-      } catch (err) {
-        setIsError(true)
-      }
+  const getData = async () => {
+    try {
+      const response = await getAllJordans()
+      setJordans(response.data)
+    } catch (err) {
+      setIsError(true)
     }
+  }
+
+  React.useEffect(() => {
     getData()
   }, [])
 
@@ -50,7 +51,7 @@ function JordansIndex() {
         <div className="columns is-multiline">
           {jordans &&
           filterJordans().map(jordans => (
-            <JordansCard key={jordans._id} jordans={jordans} />
+            <JordansCard key={jordans.id} jordans={jordans} getData={getData}/>
           ))}
         </div>
       </div>

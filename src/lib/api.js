@@ -16,7 +16,7 @@ export function getAllJordans() {
 }
 
 export function getSingleJordan(jordanId) {
-  return axios.get(`${baseUrl}/jordans/${jordanId}`)
+  return axios.get(`${baseUrl}/jordans/${jordanId}/`)
 }
 
 export function addNewJordan(formData) {
@@ -31,6 +31,10 @@ export function deleteJordan(jordanId) {
   return axios.delete(`${baseUrl}/jordans/${jordanId}/`, getHeaders())
 }
 
+export function likeJordan(jordanId) {
+  return axios.post(`${baseUrl}/jordans/${jordanId}/like/`, null, getHeaders())
+}
+
 // * Auth Requests
 
 export function registerUser(formData) {
@@ -42,5 +46,5 @@ export function loginUser(formData) {
 }
 
 export function userProfile() {
-  return axios.post(`${baseUrl}/auth/profile/`)
+  return axios.get(`${baseUrl}/auth/profile/`, getHeaders())
 }

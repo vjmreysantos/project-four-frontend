@@ -1,12 +1,23 @@
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { likeJordan } from '../../lib/api'
 
-// import { deleteJordan } from '../../lib/api'
 
-function JordanCard({ jordans }) {
+function JordanCard({ jordans, getData }) {
 
-  // const handleDelete = async () => {
-  //   await deleteJordan(jordans.id)
-  //   history.push('/jordans')
-  // }
+  // const { jordanId } = useParams()
+
+
+  
+  const handleLike = async (jordanId) => {
+    try {
+      await likeJordan(jordanId)
+      await getData()
+    } catch (err) {
+      console.log(err)
+    }
+  }
+  console.log(jordans.likedBy.length)
 
   return (
     <div className="column is-one-half-desktop is-one-third-tablet">
@@ -16,22 +27,16 @@ function JordanCard({ jordans }) {
           <div className="card-header-icon">🏀{jordans.likedBy.length}</div>
         </div>
         <div className="card-image">
-          <figure className="image image-is-5by3">
-            <img src={jordans.image} alt={jordans.name} />
-          </figure>
-        </div>
-
-        <div className="card-content">
-          <h2><strong>Release Date:</strong> {jordans.releaseDate}</h2>
-          <p><strong>Color:</strong> {jordans.color}</p>
-          <p><strong>Size:</strong> {jordans.size}</p>
-          <p><strong>£</strong> {jordans.price}</p>
+          <Link to={`/jordans/${jordans.id}/`}>
+            <figure className="image image-is-5by3">
+              <img src={jordans.image} alt={jordans.name} />
+            </figure>
+          </Link>
         </div>
 
         <footer className="card-footer">
-          <button className="card-footer-item">
+          <button onClick={() => handleLike(jordans.id)} className="card-footer-item">
             <img className="icon" src="https://cdn4.iconfinder.com/data/icons/sports-balls/1024/BasketBall.png"/>
-            <img className="icon" src="https://cdn4.iconfinder.com/data/icons/essentials-volume-3/128/basketball-hoop-512.png"/>
           </button>
         </footer>
       </div>

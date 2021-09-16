@@ -1,12 +1,10 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { userProfile } from '../../lib/api'
 import Error from '../common/Error'
 import Loading from '../common/Loading'
 
 function MyProfile() {
-
-  const [user, setUser] = React.useState(null)
+  const [user, setUser] = React.useState('')
   const [isError, setIsError] = React.useState(false)
   const isLoading = !user && !isError
 
@@ -22,6 +20,7 @@ function MyProfile() {
     getData()
   }, [])
 
+
   return (
     <section className="container">
       <div className="card">
@@ -29,33 +28,29 @@ function MyProfile() {
           {isError && <Error />}
           {isLoading && <Loading />}
           {user && 
-          user.map(user => (
             <>
               <div className="media">
                 <div className="media-left">
                   <figure className="image is-128x128">
-                    <img className="is-rounded" src={`${user.profileImage}`} alt="Placeholder image"/>
+                    <img className="is-rounded" src="https://thispersondoesnotexist.com/image" alt="Placeholder image"/>
                   </figure>
                 </div>
 
-                <div className="content">
+                <div className="column content">
                   <h2 className="title has-text-centered">{`${user.username}`}</h2>
+                  <h2 className="title has-text-centered">{`${user.email}`}</h2>
                 </div>
 
-                <div className="buttons">
-                  <Link
-                    to="/auth/myprofile/edit"
-                    className="button is-danger"
-                  >
-                      Edit profile
-                  </Link>
-                  <button className="button is-danger">
-                      Delete account
-                  </button>
-                </div>
               </div>
             </>
-          ))}
+          }
+        </div>
+      </div>
+      <div className="card">
+        <div className="card-image">
+          <figure className="image image-is-5by3">
+            <img src={`${user.liked_jordan}`}/>
+          </figure>
         </div>
       </div>
     </section>

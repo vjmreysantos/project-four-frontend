@@ -6,11 +6,10 @@ import Home from './components/common/Home'
 import Register from './components/auth/Register'
 import Login from './components/auth/Login'
 import JordansIndex from './components/jordans/JordansIndex'
-// import JordansShow from './components/jordans/JordansShow'
+import JordansShow from './components/jordans/JordansShow'
 import JordansNew from './components/jordans/JordansNew'
-// import JordansEdit from './components/jordans/JordansEdit'
+import JordansEdit from './components/jordans/JordansEdit'
 import MyProfile from './components/users/MyProfile'
-import EditProfile from './components/users/EditProfile'
 
 function App() {
 
@@ -24,12 +23,12 @@ function App() {
         <SecureRoute path="/jordans/new/">
           <JordansNew />
         </SecureRoute>
-        {/* <SecureRoute path="/jordans/:id/edit/">
+        <SecureRoute path="/jordans/:jordanId/edit/">
           <JordansEdit />
-        </SecureRoute> */}
-        {/* <Route path="/jordans/:id/">
+        </SecureRoute>
+        <Route path="/jordans/:jordanId/">
           <JordansShow />
-        </Route> */}
+        </Route>
         <Route path="/jordans/">
           <JordansIndex />
         </Route>
@@ -39,12 +38,9 @@ function App() {
         <Route path="/auth/login/">
           <Login />
         </Route>
-        <Route path="/auth/profile/">
+        <SecureRoute path="/auth/profile/">
           <MyProfile />
-        </Route>
-        <Route path="/auth/profile/edit">
-          <EditProfile />
-        </Route>
+        </SecureRoute>
       </Switch>
     </BrowserRouter>
   )
