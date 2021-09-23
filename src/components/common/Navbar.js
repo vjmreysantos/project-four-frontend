@@ -1,12 +1,28 @@
 import React from 'react'
-import { Link, useHistory, useLocation } from 'react-router-dom'
+import { userProfile } from '../../lib/api'
+import { Link, useHistory, useLocation, useParams } from 'react-router-dom'
 import { isAuthenticated, removeToken } from '../../lib/auth'
 
 function Navbar() {
   const isAuth = isAuthenticated()
+  const { userId } = useParams()
   const { pathname } = useLocation()
   const history = useHistory()
+  const [user, setUser] = React.useState('')
   const [isOpen, setIsOpen] = React.useState(false)
+
+  React.useEffect(() => {
+    const getData = async () => {
+      try {
+        const response = await userProfile(userId)
+        setUser(response.data)
+        console.log(response.data)
+      } catch (err) {
+        console.log(err)
+      }
+    }
+    getData()
+  }, [userId])
 
   const handleToggle = () => {
     setIsOpen(!isOpen)
@@ -43,16 +59,19 @@ function Navbar() {
             <Link to="/jordans/" className="navbar-item">
               <strong>Kicks</strong>
             </Link>
+            {isAuth && (
+              <Link to="/jordans/new/" className="navbar-item">
+              ➕
+              </Link>
+            )}
           </div>
           <div className="navbar-end">
             <div className="navbar-item">
               {isAuth && (
                 <>
-                  <Link to="/jordans/new/" className="navbar-profile">
-                  ➕
-                  </Link>
-                  <Link to="/auth/profile/" className="navbar-item">
-                My Profile
+                  Welcome
+                  <Link to="/auth/profile/" className="navbar-profile">
+                    {user.username}
                   </Link>
                 </>
               )}

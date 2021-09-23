@@ -47,3 +47,27 @@ section.section {
 a {
   color: white;
 }
+
+#like-button:hover {
+  transform: scale(2);
+}
+
+.image-show:hover {
+  transform: scale(1.5);
+}
+
+.navbar-profile {
+  margin: 10px;
+  text-decoration: none;
+  color: black;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  background-image: url(https://static.nike.com/a/images/gmp2gru4y1xlw279fs3x/air-jordan-7.png);
+}
+
+.footer-content {
+  margin: 5px;
+}

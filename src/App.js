@@ -10,6 +10,7 @@ import JordansShow from './components/jordans/JordansShow'
 import JordansNew from './components/jordans/JordansNew'
 import JordansEdit from './components/jordans/JordansEdit'
 import MyProfile from './components/users/MyProfile'
+import Footer from './components/common/Footer'
 
 function App() {
 
@@ -42,6 +43,7 @@ function App() {
           <MyProfile />
         </SecureRoute>
       </Switch>
+      <Footer />
     </BrowserRouter>
   )
 }

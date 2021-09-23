@@ -50,7 +50,7 @@ function JordansIndex() {
         {isLoading && <Loading />}
         <div className="columns is-multiline">
           {jordans &&
-          filterJordans().map(jordans => (
+          filterJordans().sort((a, b) => b.id > a.id).map(jordans => (
             <JordansCard key={jordans.id} jordans={jordans} getData={getData}/>
           ))}
         </div>

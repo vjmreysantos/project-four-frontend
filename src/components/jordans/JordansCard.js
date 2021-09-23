@@ -4,10 +4,6 @@ import { likeJordan } from '../../lib/api'
 
 
 function JordanCard({ jordans, getData }) {
-
-  // const { jordanId } = useParams()
-
-
   
   const handleLike = async (jordanId) => {
     try {
@@ -17,14 +13,20 @@ function JordanCard({ jordans, getData }) {
       console.log(err)
     }
   }
-  console.log(jordans.likedBy.length)
 
   return (
     <div className="column is-one-half-desktop is-one-third-tablet">
       <div className="card">
         <div className="card-header">
           <div className="card-header-title">{jordans.name}</div>
-          <div className="card-header-icon">🏀{jordans.likedBy.length}</div>
+          <button
+            onClick={() => handleLike(jordans.id)}
+            className="card-header-icon">
+            <span id="like-button">
+            🏀
+            </span>
+            {jordans.likedBy.length}
+          </button>
         </div>
         <div className="card-image">
           <Link to={`/jordans/${jordans.id}/`}>
@@ -33,12 +35,6 @@ function JordanCard({ jordans, getData }) {
             </figure>
           </Link>
         </div>
-
-        <footer className="card-footer">
-          <button onClick={() => handleLike(jordans.id)} className="card-footer-item">
-            <img className="icon" src="https://cdn4.iconfinder.com/data/icons/sports-balls/1024/BasketBall.png"/>
-          </button>
-        </footer>
       </div>
     </div>
   )

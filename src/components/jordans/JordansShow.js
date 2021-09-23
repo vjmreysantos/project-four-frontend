@@ -1,14 +1,16 @@
 import React from 'react'
-import { getSingleJordan, deleteJordan } from '../../lib/api'
+import { getSingleJordan, deleteJordan, userProfile } from '../../lib/api'
 import Loading from '../common/Loading'
 import Error from '../common/Error'
 import { useParams, useHistory } from 'react-router-dom'
+import { isOwner } from '../../lib/auth'
 
 function JordanShow() {
-  const { jordanId } = useParams()
+  const { jordanId, userId } = useParams()
   const [jordan, setJordan] = React.useState('')
+  const [user, setUser] = React.useState('')
   const [isError, setIsError] = React.useState(false)
-  const isLoading = !jordan && !isError
+  const isLoading = !jordan && !user && !isError
   const history = useHistory()
 
 
@@ -23,6 +25,18 @@ function JordanShow() {
     }
     getData()
   }, [jordanId])
+
+  React.useEffect(() => {
+    const getData = async () => {
+      try {
+        const response = await userProfile(userId)
+        setUser(response.data)
+      } catch (err) {
+        setIsError(true)
+      }
+    }
+    getData()
+  }, [userId])
 
 
   const handleDelete = async () => {
@@ -46,7 +60,7 @@ function JordanShow() {
             <hr />
             <div className="columns">
               <div className="column is-half">
-                <figure className="image">
+                <figure className="image-show">
                   <img src={jordan.image} alt={jordan.name} />
                 </figure>
               </div>
@@ -74,12 +88,19 @@ function JordanShow() {
                 <hr />
                 <h2 className="title is-4"><strong>£ {jordan.price}</strong></h2>
                 <hr />
-                <button onClick={handleEdit} className="button is-danger">
-                  Edit
-                </button>
-                <button onClick={handleDelete} className="button is-danger">
-                    Delete
-                </button>
+                {isOwner(jordan.addedBy.id) ?
+                  <>
+                    <button onClick={handleEdit} className="button is-danger">
+                      Edit
+                    </button>
+                    <button onClick={handleDelete} className="button is-danger">
+                      Delete
+                    </button>
+                  </>
+                  :
+                  <div>
+                  </div>
+                }
               </div>
             </div>
           </>
