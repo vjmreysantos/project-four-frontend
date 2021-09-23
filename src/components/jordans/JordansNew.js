@@ -16,7 +16,7 @@ function JordansNew() {
   const [formData, setFormData] = React.useState(intialState)
   const [formErrors, setFormErrors] = React.useState(intialState)
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
     setFormErrors({ ...formErrors, [e.target.name]: '' })
   }
@@ -25,7 +25,7 @@ function JordansNew() {
     e.preventDefault()
     try {
       const { data } = await addNewJordan(formData)
-      history.push(`/jordans/${data.id}/`)
+      history.push(`/jordans/${data._id}/`)
     } catch (err) {
       setFormErrors(err.response.data.errors)
     }
