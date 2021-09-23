@@ -62,13 +62,8 @@ function MyProfile() {
         </div>
       </div>
       <div className="column is-one-half-desktop is-one-third-tablet">
-        <div className="title is-4">Liked Kicks</div>
         <div className="card">
-          {/* <div className="card-image">
-            <figure className="image image-is-5by3">
-              <img src={`${user.likedJordan[0].image}`}/>
-            </figure>
-          </div> */}
+
         </div>
       </div>
     </section>

@@ -67,14 +67,6 @@ function Navbar() {
           </div>
           <div className="navbar-end">
             <div className="navbar-item">
-              {isAuth && (
-                <>
-                  Welcome
-                  <Link to="/auth/profile/" className="navbar-profile">
-                    {user.username}
-                  </Link>
-                </>
-              )}
               <div className="buttons">
                 {!isAuth && (
                   <>
@@ -87,7 +79,13 @@ function Navbar() {
                   </>
                 )}
                 {isAuth && (
-                  <button className="button is-danger" onClick={handleLogout}>Log Out</button>
+                  <>
+                  Welcome
+                    <Link to="/auth/profile/" className="navbar-profile">
+                      {user.username}
+                    </Link>
+                    <button className="button is-danger" onClick={handleLogout}>Log Out</button>
+                  </>
                 )}
               </div>
             </div>
