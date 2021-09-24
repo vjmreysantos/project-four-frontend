@@ -25,7 +25,7 @@ function JordansNew() {
     e.preventDefault()
     try {
       const { data } = await addNewJordan(formData)
-      history.push(`/jordans/${data._id}/`)
+      history.push(`/jordans/${data.id}/`)
     } catch (err) {
       setFormErrors(err.response.data.errors)
     }
